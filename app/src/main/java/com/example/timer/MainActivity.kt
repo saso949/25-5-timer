@@ -8,6 +8,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     var cnt = 0
     var viewCount :Int = 0
+    var a = 0
+    var b = 0
     val hnd0 = Handler()
 
     val rnb0 = object : Runnable {
@@ -20,6 +22,14 @@ class MainActivity : AppCompatActivity() {
                 countView.text = "00:0" + viewCount
             }else if (viewCount < 60){
                 countView.text = "00:" + viewCount
+            }else if (viewCount < 600){
+                a = viewCount / 60
+                b = viewCount % 60
+                if (b < 10){
+                    countView.text = "0" + a + ":0" + b
+                }else{
+                    countView.text = "0" + a + ":" + b
+                }
             }
         }
     }
