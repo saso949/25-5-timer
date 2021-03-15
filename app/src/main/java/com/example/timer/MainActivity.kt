@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
             if (viewCount < 10) {
                 countView.text = "00:0" + viewCount
+            }else if (viewCount < 60){
+                countView.text = "00:" + viewCount
             }
         }
     }
