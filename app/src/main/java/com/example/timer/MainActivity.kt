@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
     var viewCount: Int = 0
     var a = 0
     var b = 0
-    val hnd0 = Handler()
 
     val rnb0 = object : Runnable {
         override fun run() {
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             a = viewCount / 60
             b = viewCount % 60
 
-            hnd0.postDelayed(this, 100)
+            Handler().postDelayed(this, 100)
 
             if (viewCount < 10) {
                 countView.text = "00:0" + viewCount
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         startButton.setOnClickListener() {
-            hnd0.post(rnb0)
+            Handler().post(rnb0)
         }
 
 
