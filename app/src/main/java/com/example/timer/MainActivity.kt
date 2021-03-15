@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     var a = 0
     var b = 0
 
-    val rnb0 = object : Runnable {
+   val rnb0 = object : Runnable {
         override fun run() {
             cnt += 1
             viewCount = cnt / 10
@@ -47,6 +47,10 @@ class MainActivity : AppCompatActivity() {
 
                 if (viewCount == 1500){
                     Log.d("お知らせ","25分経ちました！")
+                    cnt = 0
+                    viewCount = 0
+                    a = 0
+                    b = 0
                     soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     Handler().post(rnb1)
                 }
