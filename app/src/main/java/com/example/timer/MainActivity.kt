@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     var countSee = 0
     var a = 0
     var b = 0
+    var studyCount = 0
 
     var rnb0 = object : Runnable {
         override fun run() {
@@ -31,9 +32,20 @@ class MainActivity : AppCompatActivity() {
 
 
             //30分タイマー
-            if (tt == 7 || tt == 15 || tt == 23 || tt == 31 || tt == 39 || tt == 47) {
+            if (studyCount % 5 == 0 && tt > 0) {
 
-                situationView.text = "長期休憩中..."
+                if (countSee < viewCount){
+                    if (situationView.text == "長期休憩中..." || situationView.text == "勉強中"){
+                        situationView.text = "長期休憩中"
+                    }else if (situationView.text == "長期休憩中"){
+                        situationView.text = "長期休憩中."
+                    }else if (situationView.text == "長期休憩中."){
+                        situationView.text = "長期休憩中.."
+                    }else if (situationView.text == "長期休憩中.."){
+                        situationView.text = "長期休憩中..."
+                    }
+                }
+                
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
@@ -101,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                         viewCount = 0
                         a = 0
                         b = 0
+                        studyCount += 1
                         countView.text = "00:00"
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     }
@@ -119,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                         situationView.text = "簡易休憩中..."
                     }
                 }
-                
+
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
