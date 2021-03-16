@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     if (viewCount == 1500) {
+                        situationView.text = "勉強中"
                         Log.d("お知らせ", "25分経ちました！")
                         tt += 1
                         cnt = 0
@@ -107,7 +108,18 @@ class MainActivity : AppCompatActivity() {
                 //5分タイマー
             } else if (tt % 2 == 1) {
 
-                situationView.text = "簡易休憩中..."
+                if (countSee < viewCount){
+                    if (situationView.text == "簡易休憩中..." || situationView.text == "勉強中"){
+                        situationView.text = "簡易休憩中"
+                    }else if (situationView.text == "簡易休憩中"){
+                        situationView.text = "簡易休憩中."
+                    }else if (situationView.text == "簡易休憩中."){
+                        situationView.text = "簡易休憩中.."
+                    }else if (situationView.text == "簡易休憩中.."){
+                        situationView.text = "簡易休憩中..."
+                    }
+                }
+                
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
