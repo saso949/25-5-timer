@@ -29,8 +29,9 @@ class MainActivity : AppCompatActivity() {
 
             //30分タイマー
             if (tt == 7 || tt == 15 || tt == 23 || tt == 31 || tt == 39 || tt == 47) {
-                if (viewCount < 10) {
 
+                situationView.text = "長期休憩中..."
+                if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
                     countView.text = "00:" + viewCount
@@ -57,8 +58,10 @@ class MainActivity : AppCompatActivity() {
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     }
                 }
+                //25分タイマー
             } else if (tt % 2 == 0) {
 
+                situationView.text = "勉強中..."
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
@@ -87,8 +90,10 @@ class MainActivity : AppCompatActivity() {
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     }
                 }
+                //5分タイマー
             } else if (tt % 2 == 1) {
 
+                situationView.text = "簡易休憩中..."
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
