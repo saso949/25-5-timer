@@ -16,21 +16,37 @@ class MainActivity : AppCompatActivity() {
     var tt = 0
     var cnt = 0
     var viewCount: Int = 0
+    var countSee = 0
     var a = 0
     var b = 0
+    var studyCount = 0
 
     var rnb0 = object : Runnable {
         override fun run() {
 
+            countSee = viewCount
             cnt += 1
             viewCount = cnt / 10
             a = viewCount / 60
             b = viewCount % 60
 
-            //30分タイマー
-            if (tt == 7 || tt == 15 || tt == 23 || tt == 31 || tt == 39 || tt == 47) {
-                if (viewCount < 10) {
 
+            //30分タイマー
+            if (studyCount % 5 == 0 && tt > 0) {
+
+                if (countSee < viewCount) {
+                    if (situationView.text == "長期休憩中..." || situationView.text == "勉強中") {
+                        situationView.text = "長期休憩中"
+                    } else if (situationView.text == "長期休憩中") {
+                        situationView.text = "長期休憩中."
+                    } else if (situationView.text == "長期休憩中.") {
+                        situationView.text = "長期休憩中.."
+                    } else if (situationView.text == "長期休憩中..") {
+                        situationView.text = "長期休憩中..."
+                    }
+                }
+
+                if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
                     countView.text = "00:" + viewCount
@@ -49,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (viewCount == 1800) {
                         Log.d("お知らせ", "30分経ちました！")
+                        situationView.text = "長期休憩中"
                         tt += 1
                         cnt = 0
                         viewCount = 0
@@ -57,7 +74,19 @@ class MainActivity : AppCompatActivity() {
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     }
                 }
+                //25分タイマー
             } else if (tt % 2 == 0) {
+                if (countSee < viewCount) {
+                    if (situationView.text == "勉強中..." || situationView.text == "今の状況" || situationView.text == "簡易休憩中" || situationView.text == "長期休憩中") {
+                        situationView.text = "勉強中"
+                    } else if (situationView.text == "勉強中") {
+                        situationView.text = "勉強中."
+                    } else if (situationView.text == "勉強中.") {
+                        situationView.text = "勉強中.."
+                    } else if (situationView.text == "勉強中..") {
+                        situationView.text = "勉強中..."
+                    }
+                }
 
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
@@ -77,17 +106,32 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     if (viewCount == 1500) {
+                        situationView.text = "勉強中"
                         Log.d("お知らせ", "25分経ちました！")
                         tt += 1
                         cnt = 0
                         viewCount = 0
                         a = 0
                         b = 0
+                        studyCount += 1
                         countView.text = "00:00"
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
                     }
                 }
+                //5分タイマー
             } else if (tt % 2 == 1) {
+
+                if (countSee < viewCount) {
+                    if (situationView.text == "簡易休憩中..." || situationView.text == "勉強中") {
+                        situationView.text = "簡易休憩中"
+                    } else if (situationView.text == "簡易休憩中") {
+                        situationView.text = "簡易休憩中."
+                    } else if (situationView.text == "簡易休憩中.") {
+                        situationView.text = "簡易休憩中.."
+                    } else if (situationView.text == "簡易休憩中..") {
+                        situationView.text = "簡易休憩中..."
+                    }
+                }
 
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
@@ -100,6 +144,7 @@ class MainActivity : AppCompatActivity() {
                         countView.text = "0" + a.toString() + ":" + b
                     }
                     if (viewCount == 300) {
+                        situationView.text = "簡易休憩中"
                         Log.d("お知らせ", "5分がたちました！")
                         tt += 1
                         cnt = 0
