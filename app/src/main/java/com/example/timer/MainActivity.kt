@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (cnt < 18006) {
-                Handler().postDelayed(this, 100)
+                Handler().postDelayed(this, 100)y
             }
         }
     }
