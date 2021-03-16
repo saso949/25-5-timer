@@ -16,16 +16,19 @@ class MainActivity : AppCompatActivity() {
     var tt = 0
     var cnt = 0
     var viewCount: Int = 0
+    var countSee = 0
     var a = 0
     var b = 0
 
     var rnb0 = object : Runnable {
         override fun run() {
 
+            countSee = viewCount
             cnt += 1
             viewCount = cnt / 10
             a = viewCount / 60
             b = viewCount % 60
+
 
             //30分タイマー
             if (tt == 7 || tt == 15 || tt == 23 || tt == 31 || tt == 39 || tt == 47) {
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (viewCount == 1800) {
                         Log.d("お知らせ", "30分経ちました！")
+                        situationView.text = "長期休憩中"
                         tt += 1
                         cnt = 0
                         viewCount = 0
@@ -60,8 +64,18 @@ class MainActivity : AppCompatActivity() {
                 }
                 //25分タイマー
             } else if (tt % 2 == 0) {
+                if (countSee < viewCount){
+                    if (situationView.text == "勉強中..." || situationView.text == "今の状況" || situationView.text == "簡易休憩中" || situationView.text == "長期休憩中"){
+                        situationView.text = "勉強中"
+                    }else if (situationView.text == "勉強中"){
+                        situationView.text = "勉強中."
+                    }else if (situationView.text == "勉強中."){
+                        situationView.text = "勉強中.."
+                    }else if (situationView.text == "勉強中.."){
+                        situationView.text = "勉強中..."
+                    }
+                }
 
-                situationView.text = "勉強中..."
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
@@ -105,6 +119,7 @@ class MainActivity : AppCompatActivity() {
                         countView.text = "0" + a.toString() + ":" + b
                     }
                     if (viewCount == 300) {
+                        situationView.text = "簡易休憩中"
                         Log.d("お知らせ", "5分がたちました！")
                         tt += 1
                         cnt = 0
@@ -117,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (cnt < 18006) {
-                Handler().postDelayed(this, 100)y
+                Handler().postDelayed(this, 100)
             }
         }
     }
