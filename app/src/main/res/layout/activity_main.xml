@@ -20,12 +20,12 @@
 
     <TextView
         android:id="@+id/situationView"
-        android:layout_width="224dp"
-        android:layout_height="19dp"
+        android:layout_width="279dp"
+        android:layout_height="56dp"
         android:gravity="left"
         android:text="今の状況"
         android:textColor="@color/black"
-        android:textSize="11dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintLeft_toLeftOf="parent"

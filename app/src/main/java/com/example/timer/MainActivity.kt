@@ -34,18 +34,18 @@ class MainActivity : AppCompatActivity() {
             //30分タイマー
             if (studyCount % 5 == 0 && tt > 0) {
 
-                if (countSee < viewCount){
-                    if (situationView.text == "長期休憩中..." || situationView.text == "勉強中"){
+                if (countSee < viewCount) {
+                    if (situationView.text == "長期休憩中..." || situationView.text == "勉強中") {
                         situationView.text = "長期休憩中"
-                    }else if (situationView.text == "長期休憩中"){
+                    } else if (situationView.text == "長期休憩中") {
                         situationView.text = "長期休憩中."
-                    }else if (situationView.text == "長期休憩中."){
+                    } else if (situationView.text == "長期休憩中.") {
                         situationView.text = "長期休憩中.."
-                    }else if (situationView.text == "長期休憩中.."){
+                    } else if (situationView.text == "長期休憩中..") {
                         situationView.text = "長期休憩中..."
                     }
                 }
-                
+
                 if (viewCount < 10) {
                     countView.text = "00:0" + viewCount
                 } else if (viewCount < 60) {
@@ -76,14 +76,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 //25分タイマー
             } else if (tt % 2 == 0) {
-                if (countSee < viewCount){
-                    if (situationView.text == "勉強中..." || situationView.text == "今の状況" || situationView.text == "簡易休憩中" || situationView.text == "長期休憩中"){
+                if (countSee < viewCount) {
+                    if (situationView.text == "勉強中..." || situationView.text == "今の状況" || situationView.text == "簡易休憩中" || situationView.text == "長期休憩中") {
                         situationView.text = "勉強中"
-                    }else if (situationView.text == "勉強中"){
+                    } else if (situationView.text == "勉強中") {
                         situationView.text = "勉強中."
-                    }else if (situationView.text == "勉強中."){
+                    } else if (situationView.text == "勉強中.") {
                         situationView.text = "勉強中.."
-                    }else if (situationView.text == "勉強中.."){
+                    } else if (situationView.text == "勉強中..") {
                         situationView.text = "勉強中..."
                     }
                 }
@@ -121,14 +121,14 @@ class MainActivity : AppCompatActivity() {
                 //5分タイマー
             } else if (tt % 2 == 1) {
 
-                if (countSee < viewCount){
-                    if (situationView.text == "簡易休憩中..." || situationView.text == "勉強中"){
+                if (countSee < viewCount) {
+                    if (situationView.text == "簡易休憩中..." || situationView.text == "勉強中") {
                         situationView.text = "簡易休憩中"
-                    }else if (situationView.text == "簡易休憩中"){
+                    } else if (situationView.text == "簡易休憩中") {
                         situationView.text = "簡易休憩中."
-                    }else if (situationView.text == "簡易休憩中."){
+                    } else if (situationView.text == "簡易休憩中.") {
                         situationView.text = "簡易休憩中.."
-                    }else if (situationView.text == "簡易休憩中.."){
+                    } else if (situationView.text == "簡易休憩中..") {
                         situationView.text = "簡易休憩中..."
                     }
                 }
