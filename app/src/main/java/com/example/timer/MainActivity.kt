@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     var countSee = 0
     var a = 0
     var b = 0
-    var studyCount = 0
+    var studyCount = 1
 
     var rnb0 = object : Runnable {
         override fun run() {
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                         tt += 1
                         cnt = 0
                         viewCount = 0
+                        studyCount += 1
                         a = 0
                         b = 0
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
