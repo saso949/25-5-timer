@@ -7,6 +7,8 @@ import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.BufferedReader
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     var studyCount = 1
     var pomoCount = 0
 
+    var filePomo = "pomoCount.txt"
+
     var rnb0 = object : Runnable {
         override fun run() {
 
@@ -30,6 +34,15 @@ class MainActivity : AppCompatActivity() {
             viewCount = cnt / 10
             a = viewCount / 60
             b = viewCount % 60
+
+
+            val readFile = File(applicationContext.filesDir, "pomoCount.txt")
+            if (readFile.exists()) {
+                val contents = readFile.bufferedReader().use(BufferedReader::read)
+                pomoCount = contents
+            }
+
+            proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
 
 
             //30分タイマー
@@ -76,6 +89,9 @@ class MainActivity : AppCompatActivity() {
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
 
                         pomoCount ++
+                        File(applicationContext.filesDir, filePomo).writer().use {
+                            it.write(pomoCount)
+                        }
                         proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
                     }
                 }
