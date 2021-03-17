@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     var a = 0
     var b = 0
     var studyCount = 1
+    var pomoCount = 0
 
     var rnb0 = object : Runnable {
         override fun run() {
@@ -73,6 +74,9 @@ class MainActivity : AppCompatActivity() {
                         a = 0
                         b = 0
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
+
+                        pomoCount ++
+                        proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
                     }
                 }
                 //25分タイマー
