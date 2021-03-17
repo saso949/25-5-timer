@@ -33,6 +33,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.006" />
 
+    <TextView
+        android:id="@+id/proCount"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="累計ポモドーロ数:0回"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
     <Button
         android:id="@+id/startButton"
         android:layout_width="134dp"
