@@ -204,6 +204,7 @@ class MainActivity : AppCompatActivity() {
 
         startButton.setOnClickListener() {
             startButton.isClickable = false
+            startButton.setBackgroundColor(Color.rgb(192,192,192))
             Handler().post(rnb0)
         }
 
