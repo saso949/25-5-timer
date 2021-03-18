@@ -204,8 +204,19 @@ class MainActivity : AppCompatActivity() {
             Handler().post(rnb0)
         }
 
+        var stopCounter = 0
+        var cntBackup = 0
         stopButton.setOnClickListener(){
-            cnt = 18006
+            if (stopCounter % 2 == 0){
+                stopCounter ++
+                cntBackup = cnt
+                cnt = 18006
+            }else if(stopCounter % 2 == 1){
+                stopCounter ++
+                cnt = cntBackup
+                Handler().post(rnb0)
+            }
+
         }
 
 
