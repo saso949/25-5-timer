@@ -204,6 +204,11 @@ class MainActivity : AppCompatActivity() {
             Handler().post(rnb0)
         }
 
+        stopButton.setOnClickListener(){
+            cnt = 18006
+        }
+
+
 
     }
 }
