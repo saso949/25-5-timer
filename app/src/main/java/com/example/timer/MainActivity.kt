@@ -7,6 +7,8 @@ import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.BufferedReader
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     var a = 0
     var b = 0
     var studyCount = 1
+    var pomoCount = 0
+
 
     var rnb0 = object : Runnable {
         override fun run() {
@@ -73,6 +77,12 @@ class MainActivity : AppCompatActivity() {
                         a = 0
                         b = 0
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
+
+                        pomoCount ++
+                        File(applicationContext.filesDir, "pomoCount.text").writer().use {
+                            it.write(pomoCount)
+                        }
+                        proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
                     }
                 }
                 //25分タイマー
@@ -168,18 +178,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val readFile = File(applicationContext.filesDir, "pomoCount.text")
+        if (readFile.exists()) {
+            val contents = readFile.bufferedReader().use(BufferedReader::read)
+            pomoCount = contents
+        }
+
+        proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
+
+
         val audioAttributes = AudioAttributes.Builder()
-            // USAGE_MEDIA
-            // USAGE_GAME
             .setUsage(AudioAttributes.USAGE_GAME)
-            // CONTENT_TYPE_MUSIC
-            // CONTENT_TYPE_SPEECH, etc.
             .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
             .build()
 
         soundPool = SoundPool.Builder()
             .setAudioAttributes(audioAttributes)
-            // ストリーム数に応じて
             .setMaxStreams(2)
             .build()
 
