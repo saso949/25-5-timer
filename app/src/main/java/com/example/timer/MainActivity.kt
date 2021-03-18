@@ -211,10 +211,12 @@ class MainActivity : AppCompatActivity() {
                 stopCounter ++
                 cntBackup = cnt
                 cnt = 18006
+                stopButton.text = "再開"
             }else if(stopCounter % 2 == 1){
                 stopCounter ++
                 cnt = cntBackup
                 Handler().post(rnb0)
+                stopButton.text = "ストップ"
             }
 
         }
