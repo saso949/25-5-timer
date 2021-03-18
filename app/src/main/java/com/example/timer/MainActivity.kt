@@ -1,5 +1,7 @@
 package com.example.timer
 
+import android.graphics.Color
+import android.graphics.Color.rgb
 import android.media.AudioAttributes
 import android.media.SoundPool
 import android.os.Bundle
@@ -201,6 +203,8 @@ class MainActivity : AppCompatActivity() {
         soundOne = soundPool.load(this, R.raw.one, 1)
 
         startButton.setOnClickListener() {
+            startButton.isClickable = false
+            startButton.setBackgroundColor(Color.rgb(192,192,192))
             Handler().post(rnb0)
         }
 

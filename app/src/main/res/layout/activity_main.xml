@@ -48,9 +48,9 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="134dp"
-        android:layout_height="59dp"
-        android:background="#D1EFAF"
+        android:layout_width="135dp"
+        android:layout_height="69dp"
+        android:backgroundTint="@null"
         android:text="スタート"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.263"
@@ -61,9 +61,9 @@
 
     <Button
         android:id="@+id/stopButton"
-        android:layout_width="134dp"
-        android:layout_height="59dp"
-        android:background="#D1EFAF"
+        android:layout_width="133dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@null"
         android:text="ストップ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.747"
