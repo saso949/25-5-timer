@@ -37,7 +37,7 @@
         android:id="@+id/proCount"
         android:layout_width="360dp"
         android:layout_height="50dp"
-        android:gravity=""
+        android:gravity="left"
         android:text="累計ポモドーロ数:0ポモドーロ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.686"

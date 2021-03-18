@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     var studyCount = 1
     var pomoCount = 0
 
-    var filePomo = "pomoCount.txt"
 
     var rnb0 = object : Runnable {
         override fun run() {
@@ -34,15 +33,6 @@ class MainActivity : AppCompatActivity() {
             viewCount = cnt / 10
             a = viewCount / 60
             b = viewCount % 60
-
-
-            val readFile = File(applicationContext.filesDir, "pomoCount.txt")
-            if (readFile.exists()) {
-                val contents = readFile.bufferedReader().use(BufferedReader::read)
-                pomoCount = contents
-            }
-
-            proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
 
 
             //30分タイマー
@@ -89,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                         soundPool.play(soundOne, 1.0f, 1.0f, 0, 0, 1.0f)
 
                         pomoCount ++
-                        File(applicationContext.filesDir, filePomo).writer().use {
+                        File(applicationContext.filesDir, "pomoCount.text").writer().use {
                             it.write(pomoCount)
                         }
                         proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
@@ -188,18 +178,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val readFile = File(applicationContext.filesDir, "pomoCount.text")
+        if (readFile.exists()) {
+            val contents = readFile.bufferedReader().use(BufferedReader::read)
+            pomoCount = contents
+        }
+
+        proCount.text = "累計ポモドーロ数:" + pomoCount + "ポモドーロ"
+
+
         val audioAttributes = AudioAttributes.Builder()
-            // USAGE_MEDIA
-            // USAGE_GAME
             .setUsage(AudioAttributes.USAGE_GAME)
-            // CONTENT_TYPE_MUSIC
-            // CONTENT_TYPE_SPEECH, etc.
             .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
             .build()
 
         soundPool = SoundPool.Builder()
             .setAudioAttributes(audioAttributes)
-            // ストリーム数に応じて
             .setMaxStreams(2)
             .build()
 
